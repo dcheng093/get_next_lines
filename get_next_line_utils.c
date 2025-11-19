@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:30:58 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/19 18:20:57 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/19 20:20:01 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strchr_gnl(const char *s, int c)
 		return (NULL);
 	while (s[i] && s[i] != (unsigned char)c)
 		i++;
-	if (s[i] == (unsigned char)c || !c)
+	if (s[i] == (unsigned char)c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
@@ -81,8 +81,8 @@ char	*ft_substr_gnl(char *s, int start, int len)
 char	*ft_strjoin_gnl(char *save, char *buff, int r)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
