@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:01:15 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/26 16:29:41 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/26 17:08:53 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*extract_line(char **save)
 	ssize_t	len;
 
 	len = 0;
-	if (!*save || **save == '\0')
+	if (!*save || !**save)
 		return (NULL);
 	while ((*save)[len] && (*save)[len] != '\n')
 		len++;
@@ -49,12 +49,10 @@ char	*get_next_line(int fd)
 		bytes = read(fd, buff, BUFFER_SIZE);
 		if (bytes < 0)
 		{
-			free(buff);
-			return (NULL);
+			return (free(buff), NULL);
 		}
 		buff[bytes] = '\0';
 		save[fd] = ft_strjoin_gnl(save[fd], buff, bytes);
 	}
-	free(buff);
-	return (extract_line(&save[fd]));
+	return (free(buff), extract_line(&save[fd]));
 }

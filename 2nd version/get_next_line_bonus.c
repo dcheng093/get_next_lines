@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:01:15 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/26 16:32:35 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/26 17:09:43 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ char	*get_next_line(int fd)
 	{
 		bytes = read(fd, buff, BUFFER_SIZE);
 		if (bytes < 0)
-		{
-			free (buff);
-			return (NULL);
-		}
+			return (free (buff), NULL);
 		buff[bytes] = '\0';
 		save[fd] = ft_strjoin_gnl(save[fd], buff, bytes);
 	}
