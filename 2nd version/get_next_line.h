@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:02:37 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/26 15:50:53 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/26 16:18:52 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /* gnl */
 
-char	*get_next_line(ssize_t fd);
+char	*get_next_line(int fd);
 char	*extract_line(char **save);
 
 /* gnl_utils*/

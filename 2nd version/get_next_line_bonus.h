@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/22 05:08:40 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/26 15:50:59 by dcheng           ###   ########.fr       */
+/*   Created: 2025/11/26 16:28:44 by dcheng            #+#    #+#             */
+/*   Updated: 2025/11/26 16:30:08 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /* gnl */
 
-char	*get_next_line(ssize_t fd);
+char	*get_next_line(int fd);
 char	*extract_line(char **save);
 
 /* gnl_utils*/

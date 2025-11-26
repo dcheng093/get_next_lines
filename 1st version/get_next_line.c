@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:01:15 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/19 20:21:46 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/19 20:31:54 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,4 @@ char	*extract_line(char **save)
 	return (line);
 }
 
-char	*get_next_line(int fd)
-{
-	static char	*save;
-	char		*buff;
-	int			bytes_read;
-
-}
+char	*get_next_line(int fd);

@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:01:15 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/26 15:51:21 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/26 16:32:35 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*extract_line(char **save)
 	size_t	len;
 
 	len = 0;
-	if (!*save || **save == '\0')
+	if (!*save || !**save)
 		return (NULL);
 	while ((*save)[len] && (*save)[len] != '\n')
 		len++;
@@ -32,13 +32,13 @@ char	*extract_line(char **save)
 	return (line);
 }
 
-char	*get_next_line(ssize_t fd)
+char	*get_next_line(int fd)
 {
 	static char	*save[1024];
-	char		*buff;
 	ssize_t		bytes;
+	char		*buff;
 
-	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buff = malloc(BUFFER_SIZE + 1);
 	if (!buff)
@@ -49,10 +49,11 @@ char	*get_next_line(ssize_t fd)
 		bytes = read(fd, buff, BUFFER_SIZE);
 		if (bytes < 0)
 		{
-			return (free(buff), NULL);
+			free (buff);
+			return (NULL);
 		}
 		buff[bytes] = '\0';
 		save[fd] = ft_strjoin_gnl(save[fd], buff, bytes);
 	}
-	return (free(buff), NULL);
+	return (free(buff), extract_line(&save[fd]));
 }
