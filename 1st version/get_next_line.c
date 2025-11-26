@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:01:15 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/19 20:31:54 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/26 17:04:42 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,29 @@ char	*extract_line(char **save)
 	return (line);
 }
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd)
+{
+	static char	*save[1024];
+	char		*buff;
+	ssize_t		bytes;
+
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buff = malloc(BUFFER_SIZE + 1);
+	if (!buff)
+		return (NULL);
+	bytes = 1;
+	while (bytes > 0 && !ft_strchr_gnl(save[fd], '\n'))
+	{
+		bytes = read(fd, buff, BUFFER_SIZE);
+		if (bytes < 0)
+		{
+			free(buff);
+			return (NULL);
+		}
+		buff[bytes] = '\0';
+		save[fd] = ft_strjoin_gnl(save[fd], buff, bytes);
+	}
+	free(buff);
+	return (extract_line(&save[fd]));
+}
