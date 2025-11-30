@@ -6,28 +6,28 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:27:25 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/26 16:27:25 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/30 01:20:56 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <fcntl.h>
-// #include <stdio.h>
-// #include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include "get_next_line.h"
 
-// int main(void)
-// {
-//     int fd = open("get_next_line_utils.c", O_RDONLY);
-//     char *line;
+int main(void)
+{
+    int fd = open("get_next_line_utils.c", O_RDONLY);
+    char *line;
 
-//     if (fd < 0)
-//         return (1);
+    if (fd < 0)
+        return (1);
 
-//     while ((line = get_next_line(fd)))
-//     {
-//         printf("%s", line);
-//         free(line);
-//     }
+    while ((line = get_next_line(fd)))
+    {
+        printf("%s", line);
+        free(line);
+    }
 
-//     close(fd);
-//     return (0);
-// }
+    close(fd);
+    return (0);
+}

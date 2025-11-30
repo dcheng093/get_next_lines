@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:01:15 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/26 15:52:10 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/30 01:12:24 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ char	*get_next_line(ssize_t fd)
 	bytes = 1;
 	while (bytes)
 	{
-		i = -1;
-		while (prev && prev[++i])
+		i = 0;
+		while (prev && prev[i++])
 			if (prev[i] == '\n')
 				return (free(buffer), ft_get_line(&prev));
 		bytes = read(fd, buffer, BUFFER_SIZE);
